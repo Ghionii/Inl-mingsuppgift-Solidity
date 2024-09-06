@@ -86,7 +86,7 @@ contract VotingContract {
         require(!hasVoted[msg.sender], "You have already voted");
 
         bool _found = false;
-        for(uint i = 0; i < session.movies.length; i++) {
+        for(uint i = 0; i < session.movies.length; ++i) {
             if (keccak256(bytes(session.movies[i].name)) == keccak256(bytes(_votingOption))) {
                 session.movies[i].voteCount += 1;
                 _found = true;
@@ -104,7 +104,7 @@ contract VotingContract {
   
         uint highestVoteCount = 0;
 
-        for(uint i = 0; i < session.movies.length; i++) {
+        for(uint i = 0; i < session.movies.length; ++i) {
             if (session.movies[i].voteCount > highestVoteCount) {
                 highestVoteCount = session.movies[i].voteCount;
                 session.winner = session.movies[i].name;
